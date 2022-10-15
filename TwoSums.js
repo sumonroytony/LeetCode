@@ -1,15 +1,15 @@
-var twoSum = function (nums, target) {
-  const obj = {};
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] in obj) {
-      return [obj[nums[i]], i];
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+ var twoSum = function(nums, target) {
+  const obj = {};  
+  for(let i = 0; i <nums.length; i++){
+      if(obj.hasOwnProperty(nums[i])) return [obj[nums[i]], i]
+      obj[target-nums[i]] = i;
+      console.log(obj)
     }
-    const result = target - nums[i];
-    obj[result] = i;
-  }
 };
 
-const nums = [2, 7, 5, 7, 8, 1];
-const target = 9;
-
-console.log(twoSum(nums, target));
+console.log(twoSum([2,7,11,15],9))
