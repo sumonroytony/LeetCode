@@ -64,6 +64,7 @@ MyLinkedList.prototype.addAtTail = function(val) {
     this.tail.next = newNode;
     newNode.previous = this.tail;
     this.tail = newNode;
+    console.log(this.head)
 };
 
 /** 
@@ -115,6 +116,8 @@ MyLinkedList.prototype.print = function(){
  obj.addAtHead(1)
  console.log(obj.get(1))
  obj.addAtTail(4)
- obj.addAtIndex(1,100)
+ console.log(obj.get(2))
  console.log(obj.print())
+ obj.addAtIndex(1,100)
+
 //  obj.deleteAtIndex(index)
