@@ -13,24 +13,29 @@ var checkInclusion = function (s1, s2) {
   }
 
   for (let i = 0; i < s2.length; i++) {
-    if (obj.hasOwnProperty(s2[i])) {
-      obj[s2[i]]--;
-      if (obj[s2[i]] === 0) matchedLength++;
+    const rightChar = s2[i];
+    if (obj.hasOwnProperty(rightChar)) {
+      obj[rightChar]--;
+      if (obj[rightChar] === 0) matchedLength++;
     }
 
     if (matchedLength === s1.length) return true;
 
     if (i >= s1.length - 1) {
-      if (obj.hasOwnProperty[windowStart]) {
-        if (obj[s2[windowStart]] === 0) {
+      const leftChar = s2[windowStart];
+      windowStart++;
+      if (obj.hasOwnProperty(leftChar)) {
+        if (obj[leftChar] === 0) {
           matchedLength--;
         }
-        obj[s2[windowStart]]++;
+        obj[leftChar]++;
       }
-      windowStart++;
     }
   }
   return false;
 };
 
-console.log(checkInclusion('abc', 'ccccbbbbaaaa'));
+console.log(checkInclusion('abcdxabcde', 'abcdeabcdx'));
+
+// "abcdxabcde"
+// "abcdeabcdx"
