@@ -1,44 +1,18 @@
-function find_permutation(str, pattern) {
-  let windowStart = 0,
-    matched = 0,
-    charFrequency = {};
+// you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
 
-  for (i = 0; i < pattern.length; i++) {
-    const chr = pattern[i];
-    if (!(chr in charFrequency)) {
-      charFrequency[chr] = 0;
-    }
-    charFrequency[chr] += 1;
-  }
-
-  // Our goal is to match all the characters from the *charFrequency' with the current window
-  // try to extend the range [windowstart, windowEnd]
-  for (windowEnd = 0; windowEnd < str.length; windowEnd++) {
-    const rightChar = str[windowEnd];
-    if (rightChar in charFrequency) {
-      // Decrement the frequency of matched character
-      charFrequency[rightChar] -= 1;
-      if (charFrequency[rightChar] === 0) {
-        matched += 1;
-      }
-    }
-
-    if (matched === Object.keys(charFrequency).length) {
-      return true;
-    }
-    // Shrink the sliding window
-    if (windowEnd >= pattern.length - 1) {
-      leftChar = str[windowStart];
-      windowStart += 1;
-      if (leftChar in charFrequency) {
-        if (charFrequency[leftChar] === 0) {
-          matched -= 1;
-        }
-        charFrequency[leftChar] += 1;
-      }
+function solution(A) {
+  // write your code in JavaScript (Node.js 14)
+  const sortedArr = A.sort((a, b) => a - b);
+  let count = 1;
+  for (let i = 0; i <= sortedArr[sortedArr.length - 1]; i++) {
+    if (sortedArr[i] > 0 || sortedArr[i] === undefined) {
+      if (sortedArr[i] !== count) return count;
+      else if (sortedArr[i] !== sortedArr[i + 1]) count++;
     }
   }
-  return false;
+  if (count > 1) return sortedArr[sortedArr.length - 1] + 1;
+  else return 1;
 }
 
-console.log(find_permutation('abcdeabcdx', 'abcdxabcde'));
+console.log(solution([1, 1, 1]));
