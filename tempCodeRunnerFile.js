@@ -1,4 +1,4 @@
-var input = '64444-4444444444';
+var input = '57254:4444444444444';
 
 if (input.includes('-')) {
   let t = input.split('-');
