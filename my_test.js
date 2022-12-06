@@ -1,56 +1,35 @@
-var input = '64444-4444444444';
-
-if (input.includes('-')) {
-  let t = input.split('-');
-  for (let i = 0; i < t.length; i++) {
-    const element = t[i];
-    if (element.length !== 5) {
-      console.log('no');
-      return;
-    }
+function cond1(s) {
+  for (var i = 0; i < s.length - 2; i++) {
+    if (s[i] == s[i + 1] && s[i + 1] == s[i + 2]) return true;
   }
-  input = input.replaceAll('-', '');
-} else if (input.includes(':')) {
-  let t = input.split(':');
-  for (let i = 0; i < t.length; i++) {
-    const element = t[i];
-    if (element.length !== 5) {
-      console.log('no');
-      return;
-    }
-  }
-  input = input.replaceAll(':', '');
-} else if (input.includes('/')) {
-  let t = input.split('/');
-  for (let i = 0; i < t.length; i++) {
-    const element = t[i];
-    if (element.length !== 5) {
-      console.log('no');
-      return;
-    }
-  }
-  input = input.replaceAll('/', '');
-} else {
-  console.log('no');
-  return;
+  return false;
 }
 
-if (input.length !== 15) {
-  console.log('no');
-  return;
+// Returns true if s has three increasing or
+// decreasing digits.
+
+// Checks if a single digit occurs 4 times.
+function cond3(s) {
+  var a = new Array(10);
+  a.fill(0);
+
+  for (var i = 0; i < s.length; i++) a[s[i] - '0']++;
+
+  for (var i = 0; i < 10; i++) if (a[i] >= 4) return true;
+
+  return false;
 }
 
-if (!/^\d+$/.test(input)) {
-  console.log('no');
-  return;
+function isFancy(s) {
+  if (cond1(s) || cond3(s)) return true;
+  else return false;
 }
 
-if (
-  input.charAt(0) === '4' ||
-  input.charAt(0) === '5' ||
-  (input.charAt(0) === '3' && input.charAt(1) === '7')
-) {
-  console.log('yes');
-} else {
-  console.log('no');
-}
+var n = '9088897541';
+// var n = '9087837541';
+
+// var s = to_string(n);
+if (isFancy(n)) console.log('Yes');
+else console.log('No');
+
+// This code is contributed by SoumikMondal
