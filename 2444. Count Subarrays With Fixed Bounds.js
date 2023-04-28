@@ -5,8 +5,8 @@
  * @return {number}
  */
 var countSubarrays = function (nums, minK, maxK) {
-  let windowStart = 0;
   let subArray = 0;
+  let windowStart = 0;
   let isMink = false;
   let isMaxk = false;
   let minStart = 0;
@@ -17,7 +17,7 @@ var countSubarrays = function (nums, minK, maxK) {
     if (_num < minK || _num > maxK) {
       isMink = false;
       isMaxk = false;
-      windowStart++;
+      windowStart = windowEnd + 1;
     }
     if (_num === minK) {
       isMink = true;
